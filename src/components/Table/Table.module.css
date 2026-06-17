@@ -1,0 +1,486 @@
+* {
+  user-select: none;
+}
+
+/* ===== Container & Theme Variables ===== */
+.ct-container {
+  --glass-bg: rgba(255, 255, 255, 0.4);
+  --glass-border: var(--bw-400);
+  --row-bg: var(--bw-500);
+  --row-hover-bg: #f4f6f8;
+  --text-main: #000000;
+  --text-muted: var(--bw-200);
+  --radius-main: 20px;
+  --border-color: var(--bw-400);
+  --glow-color: var(--primary-color);
+
+  width: 100%;
+  max-height: 100%;
+  font-family: "Inter", sans-serif;
+  border-radius: var(--radius-main);
+  box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: transparent;
+  border: 1px solid var(--glass-border);
+}
+
+/* ===== Table Wrapper & Core Table ===== */
+.ct-table-wrapper {
+  flex: 1;
+  min-height: 25rem;
+  overflow-y: auto;
+  overflow-x: auto;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  max-height: calc(15 * 3rem + 3.375rem);
+  scrollbar-width: thin;
+  scrollbar-color: transparent var(--row-bg);
+}
+
+.ct-table-wrapper:hover {
+  scrollbar-color: rgba(160, 160, 160, 0.5) var(--row-bg);
+}
+
+.ct-table-wrapper::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.ct-table-wrapper::-webkit-scrollbar-track {
+  background: var(--row-bg);
+}
+
+.ct-table-wrapper::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 8px;
+}
+
+.ct-table-wrapper:hover::-webkit-scrollbar-thumb {
+  background: rgba(160, 160, 160, 0.5);
+}
+
+.ct-table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(120, 120, 120, 0.8) !important;
+}
+
+.ct-table {
+  width: 100%;
+  min-width: 60rem;
+  max-width: 100%;
+  height: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+  table-layout: fixed;
+}
+
+.ct-table th {
+  position: sticky;
+  top: 0;
+  background: rgba(107, 107, 107, 0.2);
+  backdrop-filter: blur(5px) saturate(150%);
+  -webkit-backdrop-filter: blur(5px) saturate(150%);
+  padding: 1em 1.5em;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  z-index: 5;
+  white-space: nowrap;
+  border-bottom: none;
+  box-sizing: border-box;
+  box-shadow:
+    inset 0 -1px 0 var(--border-color),
+    0 4px 8px rgba(0, 0, 0, 0.02);
+}
+
+.ct-table td {
+  padding: 0.5em 1.5em;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--text-main);
+  white-space: nowrap;
+  height: 3rem;
+  box-sizing: border-box;
+}
+
+.ct-table thead tr {
+  background: transparent;
+}
+
+.ct-table tbody tr {
+  background: var(--row-bg);
+}
+
+.ct-table tbody tr:hover {
+  background: var(--row-hover-bg);
+}
+
+/* ===== Checkbox ===== */
+.ct-checkbox {
+  appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 1px solid rgba(0, 114, 206, 0.35);
+  border-radius: 0.375rem;
+  background: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s;
+  margin: 0;
+  display: block;
+}
+
+.ct-checkbox:checked {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.ct-checkbox:checked::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.ct-checkbox:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* ===== Status Chips ===== */
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.status-active {
+  color: var(--color-green);
+  background: rgba(52, 199, 89, 0.14);
+  border: 1.5px dashed rgba(52, 199, 89, 0.35);
+}
+.status-inactive {
+  color: var(--bw-300);
+  background: rgba(0, 0, 0, 0.04);
+  border: 1.5px dashed rgba(176, 176, 176, 0.35);
+}
+
+/* ===== Driver Avatar ===== */
+.driver-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.driver-avatar {
+  width: 1.6875rem; /* ~27px */
+  height: 1.6875rem;
+  border-radius: 50%;
+  background-color: rgba(0, 147, 175, 0.1);
+  border: 1.5px solid rgba(0, 147, 175, 0.2);
+  color: #0093af;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem; /* 12px */
+  font-weight: 500;
+}
+.status-charging {
+  color: var(--primary-color);
+  background: rgba(0, 114, 188, 0.14);
+  border: 1.5px dashed rgba(0, 114, 188, 0.35);
+}
+.status-maintenance {
+  color: #f5a623;
+  background: rgba(245, 166, 35, 0.14);
+  border: 1.5px dashed rgba(245, 166, 35, 0.35);
+}
+.status-fault {
+  color: var(--color-red);
+  background: rgba(255, 45, 85, 0.14);
+  border: 1.5px dashed rgba(255, 45, 85, 0.35);
+}
+
+/* ===== Shared Button ===== */
+.ct-btn {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--bw-400);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-main);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+}
+
+.ct-btn:hover {
+  background: rgba(255, 255, 255, 0.9);
+  color: #0093af;
+  border-color: #0093af !important;
+  box-shadow: 0 0 0 1px var(--primary-color);
+}
+
+/* ======================================================
+   GLASS DROPDOWN — Write once, use everywhere
+   Used by: ColumnToggle, Filter, Pagination rows-per-page
+   ====================================================== */
+.ct-glass-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 12.5rem;
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  padding: 0.75rem;
+  z-index: 50;
+  animation: ct-dropdown-enter 0.18s ease;
+}
+
+@keyframes ct-dropdown-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ct-glass-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-main);
+  cursor: pointer;
+  border-radius: 0.375rem;
+  transition: background 0.15s;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.ct-glass-dropdown-item:hover {
+  background: var(--row-hover-bg);
+}
+
+.ct-glass-dropdown-item.active {
+  color: #0093af;
+  font-weight: 600;
+  background: rgba(0, 147, 175, 0.08);
+}
+
+/* ===== Shared interactive element border rules ===== */
+.ct-search-input,
+.ct-btn,
+.ct-page-btn,
+.ct-go-to input,
+.ct-rows-trigger {
+  border: 1px solid var(--bw-400) !important;
+  transition: all 0.2s ease;
+}
+
+.ct-search-input:focus,
+.ct-search-input:active,
+.ct-btn:focus,
+.ct-btn:active,
+.ct-page-btn:focus:not(:disabled),
+.ct-page-btn:active:not(:disabled),
+.ct-page-btn.active,
+.ct-go-to input:focus,
+.ct-go-to input:active,
+.ct-rows-trigger:focus,
+.ct-rows-trigger:active {
+  border: 1px solid var(--primary-color) !important;
+  box-shadow: 0 0 0 1px var(--primary-color);
+  outline: none;
+}
+
+/* ===== Row Flash Animation ===== */
+@keyframes ct-flash {
+  0% {
+    background-color: rgba(0, 147, 175, 0.2);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.ct-row-flash {
+  animation: ct-flash 1.5s ease-out;
+}
+
+/* ===== Responsive Breakpoints ===== */
+@media (max-width: 72rem) {
+  .ct-table th {
+    padding: 0.875rem 0.875rem;
+    font-size: 0.8rem;
+  }
+  .ct-table td {
+    padding: 0.4rem 0.875rem;
+    font-size: 0.8125rem;
+    height: 3.25rem;
+  }
+  .ct-checkbox {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+  .ct-btn {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.8125rem;
+    gap: 0.4rem;
+  }
+  .status-chip {
+    padding: 0.2rem 0.6rem;
+    font-size: 0.8125rem;
+  }
+  .driver-avatar {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 0.7rem;
+  }
+  .ct-glass-dropdown-item {
+    padding: 0.45rem;
+    font-size: 0.8125rem;
+    gap: 0.6rem;
+  }
+}
+
+@media (max-width: 64rem) {
+  .ct-container {
+    border-radius: 18px;
+  }
+  .ct-table th {
+    padding: 0.75rem 0.75rem;
+    font-size: 0.8rem;
+  }
+  .ct-table td {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem;
+    height: 2.5rem;
+  }
+  .ct-checkbox {
+    width: 1rem;
+    height: 1rem;
+  }
+  .ct-btn {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.75rem;
+  }
+  .status-chip {
+    padding: 0.15rem 0.5rem;
+    font-size: 0.75rem;
+  }
+  .driver-avatar {
+    width: 1.375rem;
+    height: 1.375rem;
+    font-size: 0.65rem;
+  }
+  .ct-glass-dropdown-item {
+    padding: 0.4rem;
+    font-size: 0.75rem;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 56rem) {
+  .ct-container {
+    border-radius: 15px;
+  }
+  .ct-table th {
+    padding: 0.65rem 0.65rem;
+    font-size: 0.75rem;
+  }
+  .ct-table td {
+    padding: 0.3rem 0.65rem;
+    font-size: 0.75rem;
+    height: 2.25rem;
+  }
+  .driver-avatar {
+    width: 1.25rem;
+    height: 1.25rem;
+    font-size: 0.6rem;
+  }
+  .ct-glass-dropdown-item {
+    padding: 0.35rem;
+    font-size: 0.75rem;
+  }
+
+  .status-active,
+  .status-inactive,
+  .status-charging,
+  .status-maintenance,
+  .status-fault {
+    border: none;
+  }
+
+  /* Make toolbar action buttons icon-only */
+  .ct-btn-text {
+    display: none;
+  }
+  .ct-toolbar-actions .ct-btn {
+    padding: 0.4rem;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 48rem) {
+  .ct-container {
+    border-radius: 12px;
+  }
+  .ct-table th {
+    padding: 0.5rem 0.5rem;
+    font-size: 0.7rem;
+  }
+  .ct-table td {
+    padding: 0.35rem 0.5rem;
+    font-size: 0.65rem;
+    height: 1.85rem;
+  }
+  .ct-checkbox {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+  .ct-btn {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.1rem;
+  }
+  .ct-toolbar-actions .ct-btn {
+    padding: 0.275rem;
+  }
+  .status-chip {
+    padding: 0.1rem 0.4rem;
+    font-size: 0.7rem;
+  }
+  .driver-avatar {
+    width: 1.125rem;
+    height: 1.125rem;
+    font-size: 0.55rem;
+  }
+  .ct-glass-dropdown-item {
+    padding: 0.3rem;
+    font-size: 0.7rem;
+    gap: 0.4rem;
+  }
+}

@@ -1,0 +1,42 @@
+.ct-th-sortable {
+  cursor: pointer;
+  background: var(--glass-bg);
+}
+
+.ct-th-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ct-sort-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+}
+
+.ct-th-sortable:hover .ct-sort-icons {
+  color: #0093af;
+  transition: color 0.2s ease;
+}
+
+.ct-sort-icons.active {
+  color: #0093af;
+}
+
+@media (max-width: 72rem) {
+  .ct-th-content { gap: 0.45rem; }
+}
+
+@media (max-width: 64rem) {
+  .ct-th-content { gap: 0.4rem; }
+}
+
+@media (max-width: 56rem) {
+  .ct-th-content { gap: 0.35rem; }
+}
+
+@media (max-width: 48rem) {
+  .ct-th-content { gap: 0.25rem; }
+}
