@@ -6,7 +6,8 @@
 │   │   │   ├── 📁 utils
 │   │   │   │   └── 📄 getDelta.js
 │   │   │   ├── 📄 DeltaPill.jsx
-│   │   │   └── 🎨 DeltaPill.module.css
+│   │   │   ├── 🎨 DeltaPill.module.css
+│   │   │   └── 📄 index.js
 │   │   └── 📁 Table
 │   │       ├── 📁 Body
 │   │       │   └── 📄 Body.jsx
@@ -33,7 +34,8 @@
 │   │       │   ├── 📄 useSelection.js
 │   │       │   └── 📄 useSort.js
 │   │       ├── 📄 Table.jsx
-│   │       └── 🎨 Table.module.css
+│   │       ├── 🎨 Table.module.css
+│   │       └── 📄 index.js
 │   └── 📄 index.ts
 ├── ⚙️ .gitignore
 ├── 📝 FileTree.md
