@@ -1,5 +1,4 @@
 import { useState, useMemo, useRef } from 'react';
-import PropTypes from 'prop-types';
 
 import useSort from './hooks/useSort';
 import useSearch from './hooks/useSearch';
@@ -264,30 +263,6 @@ const Table = ({
       )}
     </div>
   );
-};
-
-Table.propTypes = {
-  data: PropTypes.array,
-  columns: PropTypes.array.isRequired,
-  tabs: PropTypes.array,
-  tabKey: PropTypes.string,
-  defaultTab: PropTypes.string,
-  prevData: PropTypes.array,
-  showTabs: PropTypes.bool,
-  title: PropTypes.string,
-  showSearch: PropTypes.bool,
-  showFilter: PropTypes.bool,
-  showColumnToggle: PropTypes.bool,
-  showExport: PropTypes.bool,
-  showRowSelection: PropTypes.bool,
-  showPagination: PropTypes.bool,
-  mode: PropTypes.oneOf(['client', 'server']),
-  totalServerEntries: PropTypes.number,
-  onPageChange: PropTypes.func,
-  onSortChange: PropTypes.func,
-  onFilterChange: PropTypes.func,
-  filterableColumns: PropTypes.arrayOf(PropTypes.string),
-  filterConfig: PropTypes.object,
 };
 
 export default Table;
