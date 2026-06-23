@@ -1,0 +1,14 @@
+:root {
+  /* Default Skrull UI Theme Variables */
+  --bw-200: #4f4f4f;
+  --bw-300: #b0b0b0;
+  --bw-400: #c0c0c0;
+  --bw-500: #ffffff;
+
+  --primary-color: #0093af;
+  --primary-300: #0093af;
+
+  --color-green: #34c759;
+  --color-red: #ff2d55;
+  --color-blue: #32ade6;
+}
