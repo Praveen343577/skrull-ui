@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef } from 'react';
+import { useState, useMemo, useRef, useEffect } from 'react';
 
 import useSort from './hooks/useSort';
 import useSearch from './hooks/useSearch';
@@ -168,10 +168,53 @@ const Table = ({
     if (mode === 'server' && onPageChange) onPageChange(page, rowsPerPage);
   };
 
+  const [isAutoRows, setIsAutoRows] = useState(true);
+
   const handleRowsPerPageProxy = (rows) => {
+    setIsAutoRows(false);
     setRowsPerPage(rows);
     if (mode === 'server' && onPageChange) onPageChange(1, rows);
   };
+
+  useEffect(() => {
+    if (!isAutoRows || !tableWrapperRef.current) return;
+    
+    const observer = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        const wrapperHeight = entry.contentRect.height;
+        if (wrapperHeight === 0) continue;
+        
+        const headerEl = tableWrapperRef.current.querySelector('thead');
+        const headerHeight = headerEl ? headerEl.getBoundingClientRect().height : 54;
+        
+        // Find a data row to measure, or fallback to an estimate
+        const tbody = tableWrapperRef.current.querySelector('tbody');
+        const firstRow = tbody ? tbody.querySelector('tr') : null;
+        const rowHeight = firstRow ? Math.max(firstRow.getBoundingClientRect().height, 30) : 48;
+        
+        const availableHeight = wrapperHeight - headerHeight;
+        if (availableHeight > 0) {
+          const calculatedRows = Math.floor(availableHeight / rowHeight);
+          const newRowsPerPage = Math.max(1, calculatedRows);
+          
+          setRowsPerPage((prev) => {
+            if (prev !== newRowsPerPage) {
+              // Only call onPageChange if server mode and page size actually changes
+              if (mode === 'server' && onPageChange) {
+                // setTimeout to avoid update during render if triggered immediately
+                setTimeout(() => onPageChange(1, newRowsPerPage), 0);
+              }
+              return newRowsPerPage;
+            }
+            return prev;
+          });
+        }
+      }
+    });
+    
+    observer.observe(tableWrapperRef.current);
+    return () => observer.disconnect();
+  }, [isAutoRows, setRowsPerPage, mode, onPageChange]);
 
   const allSelected = currentData.length > 0 && currentData.every((row) => selectedIds.includes(row.id));
 

@@ -5,6 +5,7 @@
   padding: 0.85rem 1rem;
   position: relative;
   z-index: 100;
+  flex-shrink: 0;
 }
 
 .ct-toolbar::before {

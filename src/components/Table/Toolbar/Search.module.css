@@ -5,7 +5,7 @@
 }
 
 .ct-search-input {
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--input-bg);
   border-radius: 0.5rem;
   padding: 0.5rem 0.75rem 0.5rem 2.25rem;
   font-size: 0.875rem;
@@ -16,7 +16,7 @@
 }
 
 .ct-search-input:focus {
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--input-bg-focus);
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
 }
 
@@ -35,7 +35,7 @@
 .ct-search-wrapper:hover .ct-search-input {
   border: 1px solid #0093af !important;
   box-shadow: 0 0 0 1px var(--primary-color);
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--input-bg-focus);
 }
 
 .ct-search-icon {

@@ -9,7 +9,7 @@ for (const key of new Set([...Object.keys(tableStyles || {}), ...Object.keys(loc
   styles[key] = [tableStyles?.[key], localS[key]].filter(Boolean).join(" ");
 }
 
-const ROWS_OPTIONS = [10, 25, 50];
+const ROWS_OPTIONS = [10, 25, 50, 100];
 
 const Pagination = ({
   currentPage, setCurrentPage,
@@ -71,27 +71,27 @@ const Pagination = ({
 
         <div className={styles["ct-pagination-numbers"]}>
 
-        {paginationItems.map((item, index) => {
-          if (item === 'left') {
+          {paginationItems.map((item, index) => {
+            if (item === 'left') {
+              return (
+                <button key={`left-${index}`} className={[styles["ct-page-btn"], styles["ct-ellipsis"]].filter(Boolean).join(" ")} onClick={() => setCurrentPage(Math.max(1, currentPage - 5))}>
+                  <ChevronsLeft size={16} />
+                </button>
+              );
+            }
+            if (item === 'right') {
+              return (
+                <button key={`right-${index}`} className={[styles["ct-page-btn"], styles["ct-ellipsis"]].filter(Boolean).join(" ")} onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 5))}>
+                  <ChevronsRight size={16} />
+                </button>
+              );
+            }
             return (
-              <button key={`left-${index}`} className={[styles["ct-page-btn"], styles["ct-ellipsis"]].filter(Boolean).join(" ")} onClick={() => setCurrentPage(Math.max(1, currentPage - 5))}>
-                <ChevronsLeft size={16} />
+              <button key={item} className={`${styles["ct-page-btn"]} ${currentPage === item ? styles['active'] : ''}`} onClick={() => setCurrentPage(item)}>
+                {item}
               </button>
             );
-          }
-          if (item === 'right') {
-            return (
-              <button key={`right-${index}`} className={[styles["ct-page-btn"], styles["ct-ellipsis"]].filter(Boolean).join(" ")} onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 5))}>
-                <ChevronsRight size={16} />
-              </button>
-            );
-          }
-          return (
-            <button key={item} className={`${styles["ct-page-btn"]} ${currentPage === item ? styles['active'] : ''}`} onClick={() => setCurrentPage(item)}>
-              {item}
-            </button>
-          );
-        })}
+          })}
 
         </div>
 
