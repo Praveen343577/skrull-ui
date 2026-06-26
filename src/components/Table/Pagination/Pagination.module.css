@@ -155,7 +155,7 @@
   box-shadow: 0 0 0 1px var(--primary-color);
 }
 
-@media (max-width: 72rem) {
+@container (max-width: 72rem) {
   .ct-footer {
     padding: 0.75rem 1rem;
     flex-wrap: wrap;
@@ -195,7 +195,7 @@
   }
 }
 
-@media (max-width: 64rem) {
+@container (max-width: 64rem) {
   .ct-showing-label {
     display: none;
   }
@@ -236,7 +236,7 @@
   }
 }
 
-@media (max-width: 56rem) {
+@container (max-width: 56rem) {
   .ct-footer {
     padding: 0.6rem 0.85rem;
   }
@@ -273,7 +273,7 @@
   }
 }
 
-@media (max-width: 48rem) {
+@container (max-width: 48rem) {
   .ct-footer {
     flex-direction: row;
     flex-wrap: wrap;

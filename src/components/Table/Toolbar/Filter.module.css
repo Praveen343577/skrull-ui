@@ -206,7 +206,7 @@
   margin-left: 0.125rem;
 }
 
-@media (max-width: 72rem) {
+@container (max-width: 72rem) {
   .ct-filter-dropdown { min-width: 10rem !important; }
   .ct-filter-title { font-size: 0.75rem; }
   .ct-filter-clear-all { font-size: 0.7rem; }
@@ -215,7 +215,7 @@
   .ct-filter-value-item { padding: 0.35rem 0.45rem !important; font-size: 0.75rem !important; gap: 0.45rem !important; }
 }
 
-@media (max-width: 64rem) {
+@container (max-width: 64rem) {
   .ct-filter-dropdown { min-width: 8.5rem !important; padding: 0.5rem !important;}
   .ct-filter-title { font-size: 0.7rem; }
   .ct-filter-clear-all { font-size: 0.65rem; }
@@ -224,7 +224,7 @@
   .ct-filter-value-item { padding: 0.3rem 0.4rem !important; font-size: 0.75rem !important; gap: 0.4rem !important; }
 }
 
-@media (max-width: 56rem) {
+@container (max-width: 56rem) {
   .ct-filter-dropdown { min-width: 7.5rem !important; }
   .ct-filter-title { font-size: 0.65rem; }
   .ct-filter-clear-all { font-size: 0.6rem; }
@@ -233,7 +233,7 @@
   .ct-filter-value-item { padding: 0.25rem 0.35rem !important; font-size: 0.7rem !important; gap: 0.35rem !important; }
 }
 
-@media (max-width: 48rem) {
+@container (max-width: 48rem) {
   .ct-filter-dropdown { min-width: 12rem; }
   .ct-filter-title { font-size: 0.6rem; }
   .ct-filter-clear-all { font-size: 0.55rem; }

@@ -25,18 +25,18 @@
   color: #0093af;
 }
 
-@media (max-width: 72rem) {
+@container (max-width: 72rem) {
   .ct-th-content { gap: 0.45rem; }
 }
 
-@media (max-width: 64rem) {
+@container (max-width: 64rem) {
   .ct-th-content { gap: 0.4rem; }
 }
 
-@media (max-width: 56rem) {
+@container (max-width: 56rem) {
   .ct-th-content { gap: 0.35rem; }
 }
 
-@media (max-width: 48rem) {
+@container (max-width: 48rem) {
   .ct-th-content { gap: 0.25rem; }
 }

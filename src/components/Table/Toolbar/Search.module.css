@@ -46,22 +46,22 @@
   pointer-events: none;
 }
 
-@media (max-width: 72rem) {
+@container (max-width: 72rem) {
   .ct-search-input { padding: 0.4725rem 0.75rem 0.4725rem 2rem; font-size: 0.8125rem; max-width: 8rem; }
   .ct-search-icon { left: 0.65rem; }
 }
 
-@media (max-width: 64rem) {
+@container (max-width: 64rem) {
   .ct-search-input { padding: 0.4835rem 0.6rem 0.4835rem 1.75rem; font-size: 0.75rem; max-width: 6.5rem; }
   .ct-search-icon { left: 0.5rem; }
 }
 
-@media (max-width: 56rem) {
+@container (max-width: 56rem) {
   .ct-search-input { padding: 0.4835rem 0.5rem 0.4835rem 1.5rem; font-size: 0.7rem; max-width: 9.5rem; }
   .ct-search-icon { left: 0.35rem; }
 }
 
-@media (max-width: 48rem) {
+@container (max-width: 48rem) {
   .ct-search-input { padding: 0.4rem 0.4rem 0.4rem 1.5rem; font-size: 0.65rem; max-width: 7.5rem; }
   .ct-search-icon { left: 0.35rem; }
 }
