@@ -221,89 +221,91 @@ const Table = ({
   const hasToolbarActions = showSearch || showFilter || showColumnToggle || showExport;
 
   return (
-    <div className={styles["ct-container"]}>
-      <Toolbar
-        tabs={tabs}
-        activeTab={activeTab}
-        onTabChange={handleTabChange}
-        showTabs={showTabs}
-        title={title}
-      >
-        {hasToolbarActions && (
-          <>
-            {showSearch && 
-              <Search 
-                value={searchQuery} 
-                onChange={handleSearchChange}
-                localeText={mergedLocale}
-              />
-            }
-            {showFilter && (
-              <Filter
-                columns={filterableCols}
-                data={mode === 'server' ? data : tabFilteredData}
-                filters={filters}
-                onFilterChange={handleFilterProxy}
-                filterConfig={filterConfig}
-                localeText={mergedLocale}
-              />
-            )}
-            {showColumnToggle && (
-              <ColumnToggle
-                columns={columns}
-                hiddenColumns={hiddenColumns}
-                onToggleColumn={toggleColumn}
-                localeText={mergedLocale}
-              />
-            )}
-            {showExport && 
-              <Export 
-                data={processedData} 
-                visibleCols={visibleCols} 
-                title={title} 
-                localeText={mergedLocale}
-              />
-            }
-            <Refresh onRefresh={handleRefresh} localeText={mergedLocale} />
-          </>
+    <div className={styles["ct-query-root"]}>
+      <div className={styles["ct-container"]}>
+        <Toolbar
+          tabs={tabs}
+          activeTab={activeTab}
+          onTabChange={handleTabChange}
+          showTabs={showTabs}
+          title={title}
+        >
+          {hasToolbarActions && (
+            <>
+              {showSearch && 
+                <Search 
+                  value={searchQuery} 
+                  onChange={handleSearchChange}
+                  localeText={mergedLocale}
+                />
+              }
+              {showFilter && (
+                <Filter
+                  columns={filterableCols}
+                  data={mode === 'server' ? data : tabFilteredData}
+                  filters={filters}
+                  onFilterChange={handleFilterProxy}
+                  filterConfig={filterConfig}
+                  localeText={mergedLocale}
+                />
+              )}
+              {showColumnToggle && (
+                <ColumnToggle
+                  columns={columns}
+                  hiddenColumns={hiddenColumns}
+                  onToggleColumn={toggleColumn}
+                  localeText={mergedLocale}
+                />
+              )}
+              {showExport && 
+                <Export 
+                  data={processedData} 
+                  visibleCols={visibleCols} 
+                  title={title} 
+                  localeText={mergedLocale}
+                />
+              }
+              <Refresh onRefresh={handleRefresh} localeText={mergedLocale} />
+            </>
+          )}
+        </Toolbar>
+        
+        <div className={styles["ct-table-wrapper"]} ref={tableWrapperRef}>
+          <table className={styles["ct-table"]}>
+            <Header
+              visibleCols={visibleCols}
+              sortConfig={sortConfig}
+              onSort={handleSortProxy}
+              allSelected={allSelected}
+              onToggleSelectAll={() => toggleSelectAll(currentData)}
+              showRowSelection={showRowSelection}
+            />
+            <Body
+              currentData={currentData}
+              tableWrapperRef={tableWrapperRef}
+              prevData={prevData}
+              visibleCols={visibleCols}
+              selectedIds={selectedIds}
+              onToggleSelectRow={toggleSelectRow}
+              showRowSelection={showRowSelection}
+            />
+          </table>
+        </div>
+        
+        {showPagination && (
+          <Pagination
+            currentPage={currentPage}
+            setCurrentPage={handlePageChangeProxy}
+            rowsPerPage={rowsPerPage}
+            setRowsPerPage={handleRowsPerPageProxy}
+            totalPages={totalPages}
+            startIndex={startIndex}
+            totalEntries={mode === 'server' ? totalServerEntries : processedData.length}
+            paginationItems={paginationItems}
+            localeText={mergedLocale}
+          />
         )}
-      </Toolbar>
-
-      <div className={styles["ct-table-wrapper"]} ref={tableWrapperRef}>
-        <table className={styles["ct-table"]}>
-          <Header
-            visibleCols={visibleCols}
-            sortConfig={sortConfig}
-            onSort={handleSortProxy}
-            allSelected={allSelected}
-            onToggleSelectAll={() => toggleSelectAll(currentData)}
-            showRowSelection={showRowSelection}
-          />
-          <Body
-            currentData={currentData}
-            tableWrapperRef={tableWrapperRef}
-            prevData={prevData}
-            visibleCols={visibleCols}
-            selectedIds={selectedIds}
-            onToggleSelectRow={toggleSelectRow}
-            showRowSelection={showRowSelection}
-          />
-        </table>
       </div>
-
-      {showPagination && (
-        <Pagination
-          currentPage={currentPage}
-          setCurrentPage={handlePageChangeProxy}
-          rowsPerPage={rowsPerPage}
-          setRowsPerPage={handleRowsPerPageProxy}
-          totalPages={totalPages}
-          startIndex={startIndex}
-          totalEntries={mode === 'server' ? totalServerEntries : processedData.length}
-          paginationItems={paginationItems}
-          localeText={mergedLocale}
-        />
-      )}
     </div>
   );
 };
