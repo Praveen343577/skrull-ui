@@ -34,7 +34,7 @@ const Pagination = ({
     <div className={styles["ct-footer"]}>
       <div className={styles["ct-showing-text"]}>
         <span className={styles["ct-showing-label"]}>
-          {localeText.showing || "Showing"} {totalEntries === 0 ? 0 : startIndex + 1}-{Math.min(startIndex + rowsPerPage, totalEntries)} {localeText.of || "of"} {totalEntries} {localeText.page || "page"}
+          {localeText.showing || "Showing"} {totalEntries === 0 ? 0 : startIndex + 1}-{Math.min(startIndex + rowsPerPage, totalEntries)} {localeText.of || "of"} {totalEntries} {localeText.rows || "rows"}
         </span>
         <div style={{ position: 'relative' }} ref={rowsDropdownRef}>
           <button
@@ -45,11 +45,11 @@ const Pagination = ({
             <ChevronDown size={12} className={`${styles["ct-rows-chevron"]} ${showRowsDropdown ? styles['rotated'] : ''}`} />
           </button>
           {showRowsDropdown && (
-            <div className={[styles["ct-glass-dropdown"], styles["ct-rows-dropdown"]].filter(Boolean).join(" ")}>
+            <div className={[styles["ct-dropdown"], styles["ct-rows-dropdown"]].filter(Boolean).join(" ")}>
               {ROWS_OPTIONS.map((opt) => (
                 <button
                   key={opt}
-                  className={`${styles["ct-glass-dropdown-item"]} ${rowsPerPage === opt ? styles['active'] : ''}`}
+                  className={`${styles["ct-dropdown-item"]} ${rowsPerPage === opt ? styles['active'] : ''}`}
                   onClick={() => {
                     setRowsPerPage(opt);
                     setCurrentPage(1);
@@ -71,27 +71,27 @@ const Pagination = ({
 
         <div className={styles["ct-pagination-numbers"]}>
 
-          {paginationItems.map((item, index) => {
-            if (item === 'left') {
-              return (
-                <button key={`left-${index}`} className={[styles["ct-page-btn"], styles["ct-ellipsis"]].filter(Boolean).join(" ")} onClick={() => setCurrentPage(Math.max(1, currentPage - 5))}>
-                  <ChevronsLeft size={16} />
-                </button>
-              );
-            }
-            if (item === 'right') {
-              return (
-                <button key={`right-${index}`} className={[styles["ct-page-btn"], styles["ct-ellipsis"]].filter(Boolean).join(" ")} onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 5))}>
-                  <ChevronsRight size={16} />
-                </button>
-              );
-            }
+        {paginationItems.map((item, index) => {
+          if (item === 'left') {
             return (
-              <button key={item} className={`${styles["ct-page-btn"]} ${currentPage === item ? styles['active'] : ''}`} onClick={() => setCurrentPage(item)}>
-                {item}
+              <button key={`left-${index}`} className={[styles["ct-page-btn"], styles["ct-ellipsis"]].filter(Boolean).join(" ")} onClick={() => setCurrentPage(Math.max(1, currentPage - 5))}>
+                <ChevronsLeft size={16} />
               </button>
             );
-          })}
+          }
+          if (item === 'right') {
+            return (
+              <button key={`right-${index}`} className={[styles["ct-page-btn"], styles["ct-ellipsis"]].filter(Boolean).join(" ")} onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 5))}>
+                <ChevronsRight size={16} />
+              </button>
+            );
+          }
+          return (
+            <button key={item} className={`${styles["ct-page-btn"]} ${currentPage === item ? styles['active'] : ''}`} onClick={() => setCurrentPage(item)}>
+              {item}
+            </button>
+          );
+        })}
 
         </div>
 

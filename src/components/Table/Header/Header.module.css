@@ -1,6 +1,6 @@
 .ct-th-sortable {
   cursor: pointer;
-  background: var(--glass-bg);
+  background: transparent;
 }
 
 .ct-th-content {

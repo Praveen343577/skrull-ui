@@ -28,9 +28,9 @@ const ColumnToggle = ({ columns, hiddenColumns, onToggleColumn, localeText = {} 
         <Columns size={16} /> <span className={styles["ct-btn-text"]}>{localeText.columns || "Columns"}</span>
       </button>
       {showMenu && (
-        <div className={styles["ct-glass-dropdown"]}>
+        <div className={styles["ct-dropdown"]}>
           {columns.map((col) => (
-            <label key={col.key} className={styles["ct-glass-dropdown-item"]}>
+            <label key={col.key} className={styles["ct-dropdown-item"]}>
               <input
                 type="checkbox"
                 className={styles["ct-checkbox"]}

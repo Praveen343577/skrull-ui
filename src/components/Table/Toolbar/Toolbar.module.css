@@ -6,17 +6,8 @@
   position: relative;
   z-index: 100;
   flex-shrink: 0;
-}
-
-.ct-toolbar::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--glass-bg);
-  backdrop-filter: blur(24px) saturate(150%);
-  -webkit-backdrop-filter: blur(24px) saturate(150%);
-  border-bottom: 1px solid var(--glass-border);
-  z-index: -1;
+  background: var(--surface-bg);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .ct-tabs {
@@ -98,13 +89,16 @@
     flex-wrap: nowrap;
     gap: 0.5rem;
   }
+
   .ct-tab {
     font-size: 0.875rem;
   }
+
   .ct-toolbar-actions {
     gap: 0.75rem;
     flex-wrap: nowrap;
   }
+
   .ct-toolbar-title {
     font-size: 1.25rem;
   }
@@ -114,15 +108,19 @@
   .ct-toolbar {
     padding: 0.75rem 0.85rem;
   }
+
   .ct-tabs {
     gap: 1rem;
   }
+
   .ct-tab {
     font-size: 0.8125rem;
   }
+
   .ct-toolbar-actions {
     gap: 0.5rem;
   }
+
   .ct-toolbar-title {
     font-size: 1.25rem;
   }
@@ -132,14 +130,17 @@
   .ct-toolbar {
     padding: 0.65rem 0.75rem;
   }
+
   .ct-tabs {
     gap: 1rem;
   }
+
   .ct-tab {
     font-size: 0.75rem;
   }
-  .ct-toolbar-actions {
-  }
+
+  .ct-toolbar-actions {}
+
   .ct-toolbar-title {
     font-size: 1.2rem;
   }
@@ -152,21 +153,25 @@
     flex-wrap: nowrap;
     padding: 0.5rem 0.75rem;
   }
+
   .ct-toolbar-actions {
     width: auto;
     justify-content: flex-end;
     flex-wrap: nowrap;
     overflow-x: visible;
   }
+
   .ct-tabs {
     width: auto;
     overflow-x: auto;
     gap: 0.75rem;
     padding: 0.5rem 0.75rem;
   }
+
   .ct-tab {
     font-size: 0.7rem;
   }
+
   .ct-toolbar-title {
     font-size: 1rem;
   }
@@ -176,6 +181,7 @@
   .ct-tabs {
     display: none !important;
   }
+
   .ct-toolbar-title-block.mobile-only {
     display: flex !important;
   }

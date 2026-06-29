@@ -92,7 +92,7 @@ const Filter = ({ columns, data, filters, onFilterChange, filterConfig = {}, loc
       </button>
 
       {isOpen && (
-        <div className={[styles["ct-glass-dropdown"], styles["ct-filter-dropdown"]].filter(Boolean).join(" ")}>
+        <div className={[styles["ct-dropdown"], styles["ct-filter-dropdown"]].filter(Boolean).join(" ")}>
           <div className={styles["ct-filter-header"]}>
             <span className={styles["ct-filter-title"]}>{localeText.filters || "Filters"}</span>
             {activeFilterCount > 0 && (
@@ -157,7 +157,7 @@ const Filter = ({ columns, data, filters, onFilterChange, filterConfig = {}, loc
                           <div className={styles["ct-filter-no-results"]}>{localeText.noMatches || "No matches"}</div>
                         ) : (
                           displayOptions.map((val) => (
-                            <label key={val} className={[styles["ct-glass-dropdown-item"], styles["ct-filter-value-item"]].filter(Boolean).join(" ")}>
+                            <label key={val} className={[styles["ct-dropdown-item"], styles["ct-filter-value-item"]].filter(Boolean).join(" ")}>
                               <input
                                 type="checkbox"
                                 className={styles["ct-checkbox"]}
