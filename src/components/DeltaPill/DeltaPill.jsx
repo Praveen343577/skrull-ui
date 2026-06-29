@@ -8,7 +8,7 @@ for (const key of new Set([...Object.keys(tableStyles || {}), ...Object.keys(loc
   styles[key] = [tableStyles?.[key], localS[key]].filter(Boolean).join(" ");
 }
 
-const DeltaPill = ({ delta, unit }) => {
+const DeltaPill = ({ delta }) => {
   if (!delta) return null;
 
   const { value, direction } = delta;
@@ -38,7 +38,7 @@ const DeltaPill = ({ delta, unit }) => {
         {isUp ? <ArrowUp size={10} strokeWidth={3} /> : <ArrowDown size={10} strokeWidth={3} />}
       </span>
       <span className={styles["ct-delta-value"]}>
-        {isUp ? '+' : '-'}{formattedValue}{unit}
+        {isUp ? '+' : '-'}{formattedValue}
       </span>
     </span>
   );
